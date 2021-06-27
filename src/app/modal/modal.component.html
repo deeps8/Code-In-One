@@ -1,0 +1,36 @@
+<ng-container *ngIf="modal$ | async as modal" >
+  <section [ngClass]="{open: modal}" >
+    <div class="modal" (click)="$event.stopPropagation()">
+      <div class="modal-head">
+        <h1>Add External files</h1>
+        <button class="close"
+        type="button"
+        (click)="closeModal()">&#10006;</button>
+      </div>
+
+      <div class="ext-form">
+        <p>constent to how to add external styles and scripts</p>
+        <div class="ext-link" >
+          <div class="url-input" *ngFor="let css of exStyle;let i = index" >
+            <input type="url" [(ngModel)]="css.link" [value]="css.link" >
+            <button (click)="removeLinks('css',i)" >remove</button>
+          </div>
+          <button (click)="addLinks('css')" >Add more CSS links</button>
+        </div>
+        <div class="ext-link" >
+          <div class="url-input" *ngFor="let js of exScript;let i = index" >
+            <input type="url" [(ngModel)]="js.link" [value]="js.link" >
+            <button (click)="removeLinks('js',i)" >remove</button>
+          </div>
+          <button (click)="addLinks('js')" >Add more JS links</button>
+        </div>
+
+        <p style="color: red;" >{{errorMsg}}</p>
+
+        <button (click)="addExtLinks()" > Update External Links </button>
+
+      </div>
+
+    </div>
+  </section>
+</ng-container>

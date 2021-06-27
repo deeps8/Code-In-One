@@ -1,0 +1,91 @@
+section {
+  visibility: hidden;
+  opacity: 0;
+
+  display: block;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  background: rgb(0 0 0 / 54%);
+  transition: opacity 250ms ease-in;
+
+  .modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 90%;
+    width: 35%;
+    background: white;
+    color: #3a1b77;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 0 8px 4px rgb(0 0 0 / 10%);
+
+    .modal-head {
+      display: flex;
+      flex-direction: row;
+      h1 {
+        margin: 0;
+      }
+      button {
+        margin-left: auto;
+        border-radius: 5px;
+        border: 0;
+        background: #d4d3d3;
+        color: inherit;
+        font-weight: bolder;
+        padding: 4px 6px;
+        cursor: pointer;
+      }
+
+    }
+
+    .ext-form{
+      input,button{
+        padding: 5px;
+        border: 0;
+        border-radius: 2px;
+        font-size: 13px;
+        font-family: inherit;
+      }
+      button{
+        background-color: #3a1b77;
+        color: white;
+        padding: 10px 20px;
+      }
+      .ext-link{
+        margin: 20px 0;
+        button{
+          background-color: #0f8a0f;
+          color: white;
+          padding: 5px 10px;
+        }
+        .url-input{
+          display: flex;
+          flex-direction: row;
+          margin: 10px 0;
+          input{
+            background: #ddd;
+            width: 100%;
+          }
+          button{
+            margin-left: auto;
+            background: #de1111;
+            color: white;
+            width: 20%;
+          }
+        }
+      }
+    }
+
+  }
+}
+.open {
+  visibility: inherit;
+  opacity: 1;
+}

@@ -1,0 +1,64 @@
+  <header class="top-header" >
+    <h2>Code-In-One 💻</h2>
+    <button (click)="openModal()" >
+      External Files
+    </button>
+  </header>
+<div class="main-sec" >
+  <div class="editors">
+    <div class="editor-sec" [ngClass]="{shrink: shrinkTab[0]}" >
+      <div class="edit-head">
+        <p>HTML</p>
+        <button *ngIf="shrinkTab[0]" (click)="shrinkStatus(0)" >
+          <img width="20px" height="20px" src="https://img.icons8.com/ios-glyphs/30/000000/expand--v2.png"/>
+        </button>
+        <button *ngIf="!shrinkTab[0]" (click)="shrinkStatus(0)" >
+          <img width="20px" height="20px" src="https://img.icons8.com/ios-glyphs/30/000000/compress.png"/>
+        </button>
+      </div>
+      <ngx-monaco-editor  class="textEditorContainer" [options]="htmlOps" [(ngModel)]="htmlData">
+      </ngx-monaco-editor>
+    </div>
+
+    <div class="editor-sec" [ngClass]="{shrink: shrinkTab[1]}" >
+      <div class="edit-head">
+        <p>CSS</p>
+        <button *ngIf="shrinkTab[1]" (click)="shrinkStatus(1)" ><img width="20px" height="20px" src="https://img.icons8.com/ios-glyphs/30/000000/expand--v2.png"/></button>
+        <button *ngIf="!shrinkTab[1]" (click)="shrinkStatus(1)" ><img width="20px" height="20px" src="https://img.icons8.com/ios-glyphs/30/000000/compress.png"/></button>
+      </div>
+      <ngx-monaco-editor  class="textEditorContainer" [options]="styleOps" [(ngModel)]="styleData">
+      </ngx-monaco-editor>
+    </div>
+
+    <div class="editor-sec" [ngClass]="{shrink: shrinkTab[2]}">
+      <div class="edit-head">
+        <p>JS</p>
+        <button *ngIf="shrinkTab[2]" (click)="shrinkStatus(2)" ><img width="20px" height="20px" src="https://img.icons8.com/ios-glyphs/30/000000/expand--v2.png"/></button>
+        <button *ngIf="!shrinkTab[2]" (click)="shrinkStatus(2)" ><img width="20px" height="20px" src="https://img.icons8.com/ios-glyphs/30/000000/compress.png"/></button>
+      </div>
+      <ngx-monaco-editor  class="textEditorContainer" [options]="scriptOps" [(ngModel)]="scriptData">
+      </ngx-monaco-editor>
+    </div>
+
+  </div>
+
+  <div class="iframe-sec" >
+    <app-iframe-com [text]="text" ></app-iframe-com>
+    <div class="console" [ngClass]="{conOpen: shrinkTab[3]}" >
+      <div class="console-head">
+        <button (click)="shrinkTab[3] = !shrinkTab[3]" >
+          <span *ngIf="!shrinkTab[3]" >open</span>
+          <span *ngIf="shrinkTab[3]" >close</span> console ( <span style="color: gray;" >{{codein.consoleData.length}}</span> )
+        </button>
+        <!-- <button [routerLink]="['/result']"  >expand output</button> -->
+        <a [routerLink]="['/result']"  ><button>expand output</button></a>
+        <button style="float: right;" (click)="codein.consoleData=[]" >clear console</button>
+      </div>
+      <div class="console-result" >
+        <p *ngFor="let res of codein.consoleData" > <span>></span> <span [class]="res.type" >{{res.msg}}</span></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-modal></app-modal>
