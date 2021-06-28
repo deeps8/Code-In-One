@@ -65,6 +65,7 @@ export class HomeComponent implements OnInit , AfterViewInit {
 
   refresh$: Observable<boolean>;
 
+  dwlink:string;
 
   constructor(public codein:CodeinoneService) {
     let data = this.codein.iframeInit(this.scriptData,this.styleData,this.htmlData,true);
@@ -73,6 +74,8 @@ export class HomeComponent implements OnInit , AfterViewInit {
     this.htmlData = data[1].html;
     this.scriptData = data[1].inScript;
     this.styleData = data[1].inStyle;
+
+    this.dwlink = 'data:text/html;charset=utf-8,' + encodeURIComponent(this.text);
 
     this.refresh$ = this.codein.watchRefresh();
     this.refresh$.subscribe(data=>{
@@ -129,6 +132,14 @@ export class HomeComponent implements OnInit , AfterViewInit {
 
   openModal(){
     this.codein.open();
+  }
+
+  dowloadFile(){
+    var link = document.createElement('a');
+    link.setAttribute('download', 'index.html');
+    let html = this.codein.exportFile();
+    link.setAttribute('href', 'data:text/html;charset=utf-8,' + encodeURIComponent(html));
+    link.click();
   }
 
 }

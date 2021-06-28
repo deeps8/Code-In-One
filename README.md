@@ -1,11 +1,14 @@
-# CodeInOne
+# 💻 CodeInOne
 
 CodeInOne is a developer environment for users who want to test HTML , CSS , JS code fast and in an efficient way.
 
-User can see results side by side and improve according to it.
-It also provide user to add external style and script files.
+## Features ⭐
+- User can see results side by side and improve according to it.
+- Inbuilt Console tab at bottom is also provided which will help user to debug code easily.
+- It also provide user to add external style and script files.
+- Export your file with just a click and share with everyone.
 
-## Demo [CodeInOne](https://deeps8.github.io/Code-In-One/)
+## Demo : [CodeInOne](https://deeps8.github.io/Code-In-One/)
 
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.0.5.

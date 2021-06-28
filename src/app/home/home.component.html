@@ -3,8 +3,21 @@
     <button (click)="openModal()" >
       External Files
     </button>
+      <button class="dwn" (click)="dowloadFile()">
+        Export HTML file
+      </button>
+      <a class="dwn" style="background-color: transparent;" href="https://github.com/deeps8/Code-In-One" target="_blank">
+        <button style="padding: 5px 10px;" >
+        <img src="https://img.icons8.com/material-outlined/24/000000/github.png"/>
+        </button>
+      </a>
   </header>
 <div class="main-sec" >
+  <!-- <div class="sm-tab">
+    <button>HTML</button>
+    <button>CSS</button>
+    <button>JS</button>
+  </div> -->
   <div class="editors">
     <div class="editor-sec" [ngClass]="{shrink: shrinkTab[0]}" >
       <div class="edit-head">

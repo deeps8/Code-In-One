@@ -44,8 +44,12 @@ export class CodeinoneService {
       this.ifc.inStyle = css;
     }
 
-    let ifdata = `<html>
+    let ifdata = `<!doctype html>
+                  <html lang="en">
                     <head>
+                    <meta charset="utf-8">
+                    <title>Index</title>
+                    <meta name="viewport" content="width=device-width, initial-scale=1">
                     ${this.ifc.exStyle.map((sl) => `<link rel="stylesheet" href="${sl.link}" \>`).join("")}
                     </head>
                     <body>${this.ifc.html}</body>
@@ -99,6 +103,21 @@ export class CodeinoneService {
     localStorage.setItem('iframe-content', JSON.stringify(this.ifc));
   }
 
+  exportFile():string{
+    return `<!doctype html>
+                  <html lang="en">
+                    <head>
+                    <meta charset="utf-8">
+                    <title>Index</title>
+                    <meta name="viewport" content="width=device-width, initial-scale=1">
+                    ${this.ifc.exStyle.map((sl) => `<link rel="stylesheet" href="${sl.link}" \>`).join("")}
+                    </head>
+                    <body>${this.ifc.html}</body>
+                    <style>${this.ifc.inStyle}</style>
+                    ${this.ifc.exScript.map((sl) => `<script src="${sl.link}" ></script>`).join("")}
+                    <script>${this.ifc.inScript}</script>
+                  </html>`;
+  }
 
   watch():Observable<boolean>{
     return this.display$.asObservable();
